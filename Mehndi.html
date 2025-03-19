@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Photo Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .gallery-item {
+            flex: 1 1 calc(33.333% - 20px);
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 1 1 calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mehndi Photo Gallery</h1>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="photo1.jpg" alt="Birthday Photo 1">
+        </div>
+        <div class="gallery-item">
+            <img src="photo2.jpg" alt="Birthday Photo 2">
+        </div>
+        <div class="gallery-item">
+            <img src="photo3.jpg" alt="Birthday Photo 3">
+        </div>
+        <div class="gallery-item">
+            <img src="photo4.jpg" alt="Birthday Photo 4">
+        </div>
+        <div class="gallery-item">
+            <img src="photo5.jpg" alt="Birthday Photo 5">
+        </div>
+        <div class="gallery-item">
+            <img src="photo6.jpg" alt="Birthday Photo 6">
+        </div>
+    </div>
+</body>
+</html>
