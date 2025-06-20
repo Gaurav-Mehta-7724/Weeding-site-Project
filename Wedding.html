@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Photo Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fffaf7;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 30px 0;
+      color: #b85c5c;
+      font-family: 'Georgia', serif;
+      letter-spacing: 1px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      justify-content: center;
+    }
+
+    .gallery-item {
+      flex: 1 1 calc(33.333% - 20px);
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+      border-radius: 10px;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-item {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-item {
+        flex: 1 1 100%;
+      }
+    }
+
+    /* Lightbox Styles */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox::after {
+      content: "✖";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>💍 Shivam & Films – Wedding Gallery 📸</h1>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="./image/Wedding/wedding-1.JPG" alt="Wedding Photo 1"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-2.JPG" alt="Wedding Photo 2"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-3.JPG" alt="Wedding Photo 3"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-4.JPG" alt="Wedding Photo 4"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-5.JPG" alt="Wedding Photo 5"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-6.JPG" alt="Wedding Photo 6"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-7.JPG" alt="Wedding Photo 7"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-8.JPG" alt="Wedding Photo 8"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-9.JPG" alt="Wedding Photo 9"></div>
+    <div class="gallery-item"><img src="./image/Wedding/wedding-10.JPG" alt="Wedding Photo 10"></div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="Full View" id="lightbox-img">
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
